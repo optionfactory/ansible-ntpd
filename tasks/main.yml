@@ -1,12 +1,13 @@
 ---
-- name: ensure ntpd is started
+- name: ensure ntpd is started (debian)
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   service:
     name: ntp
     state: started
     enabled: yes
-    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- name: ensure ntpd is started (centos)
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   service:
     name: ntpd
     state: started
     enabled: yes
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

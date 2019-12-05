@@ -1,0 +1,6 @@
+---
+- name: ensure ntp is started
+  service:
+    name: ntp
+    state: started
+    enabled: yes
